@@ -1,4 +1,4 @@
-name: IPQ60XX-WIFI
+name: TEST
 
 on:
   workflow_dispatch:
