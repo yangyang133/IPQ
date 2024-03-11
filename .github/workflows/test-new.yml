@@ -53,8 +53,8 @@ jobs:
         zlib1g-dev file wget ccache \
         sudo -E apt-get -y clean
         sudo timedatectl set-timezone "$TZ"
-        sudo -E git config --global user.name "OpenWrt Builder"
-        sudo -E git config --global user.email "buster-openwrt@ovvo.uk"
+        git config --global user.name "OpenWrt Builder"
+        git config --global user.email "buster-openwrt@ovvo.uk"
 
     - name: install po2lmo
       run: |
