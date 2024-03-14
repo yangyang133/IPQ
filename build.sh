@@ -1,8 +1,18 @@
 #!/bin/sh
-# shellcheck disable=SC3043,SC2086,SC2164,SC2103,SC2046
+# shellcheck disable=SC2086,SC3043,SC2164,SC2103,SC2046,SC2155
 
 get_sources() {
-  git clone --single-branch -b $REPO_BRANCH $BUILD_REPO openwrt
+  # the checkout actions will set $HOME to other directory,
+  # we need to reset some necessary git configs again.
+  git config --global user.name "OpenWrt Builder"
+  git config --global user.email "buster-openwrt@ovvo.uk"
+
+  git clone $BUILD_REPO --single-branch -b $GITHUB_REF_NAME openwrt
+
+  cd openwrt
+  ./scripts/feeds update -a
+  ./scripts/feeds install -a
+  cd -
 }
 
 echo_version() {
@@ -13,14 +23,23 @@ echo_version() {
   cd configs && git log -1 && cd -
 }
 
+apply_patches() {
+  [ -d patches ] || return 0
+
+  dirname $(find patches -type f -name "*.patch") | sort -u | while read -r dir; do
+    local patch_dir="$(realpath $dir)"
+    cd "$(echo $dir | sed 's|^patches/|openwrt/|')"
+    find $patch_dir -type f -name "*.patch" | while read -r patch; do
+      git am $patch
+    done
+    cd -
+  done
+}
+
 build_firmware() {
   cd openwrt
-  ./scripts/feeds update -a
-  ./scripts/feeds install -a
-  cd ..
-  cp configs/ipq6000-6.1-wifi.config openwrt/.config
-  cd openwrt
-  make defconfig
+
+  cp ${GITHUB_WORKSPACE}/configs/${BUILD_PROFILE} .config
   make -j$(($(nproc) + 1)) V=e || make -j1 V=sc || exit 1
 
   cd -
@@ -43,6 +62,7 @@ package_dl_src() {
 
 get_sources
 echo_version
+apply_patches
 build_firmware
 package_binaries
 package_dl_src
