@@ -69,6 +69,8 @@ jobs:
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
 
+        
+
     - name: Generate Variables
       run: |
         cp $CONFIG_FILE $OPENWRT_PATH/.config
@@ -92,9 +94,12 @@ jobs:
     - name: Install Feeds
       run: |
         cp $DIY_SCRIPT $OPENWRT_PATH/diy.sh
+        cp scripts/preset-clash-core.sh $OPENWRT_PATH/  
         cd $OPENWRT_PATH
         chmod +x diy.sh
+        chmod +x preset-clash-core.sh
         ./diy.sh
+        ./preset-clash-core.sh
         rm -rf feeds/packages/lang/golang
         git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
