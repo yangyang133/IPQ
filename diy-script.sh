@@ -6,8 +6,7 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 # 更改默认 Shell 为 zsh
 # sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
 
-#更改密码为password
-#sed -i 's/oot:::/oot:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:/g' package/base-files/files/etc/shadow
+
 # TTYD 免登录
 # sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 
