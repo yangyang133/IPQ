@@ -99,7 +99,7 @@ jobs:
         chmod +x diy.sh
         chmod +x preset-clash-core.sh
         ./scripts/feeds update -a
-        ./scripts/feeds update -a
+        ./scripts/feeds install -a
         
         
         
