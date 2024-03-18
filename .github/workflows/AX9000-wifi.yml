@@ -1,4 +1,4 @@
-name: IPQ60XX-WIFI
+name: AX9000-WIFI
 
 on:
   workflow_dispatch:
