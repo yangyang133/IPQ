@@ -98,9 +98,8 @@ jobs:
         cd $OPENWRT_PATH
         chmod +x diy.sh
         chmod +x preset-clash-core.sh
-        ./scripts/feeds update -a
-        rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
-        ./scripts/feeds install -a 
+        ./diy.sh
+        ./preset-clash-core.sh
         
 
     - name: Load Custom Configuration
