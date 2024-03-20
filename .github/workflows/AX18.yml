@@ -1,4 +1,4 @@
-name: IPQ60XX-WIFI
+name: AX18
 
 on:
   workflow_dispatch:
