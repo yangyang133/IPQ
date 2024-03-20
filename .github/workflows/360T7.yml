@@ -6,9 +6,9 @@ on:
     - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt
+  REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x.git
   REPO_BRANCH: master
-  CONFIG_FILE: configs/3.config
+  CONFIG_FILE: configs/36.config
   DIY_SCRIPT: diy.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
@@ -64,7 +64,7 @@ jobs:
       run: |
         df -hT $GITHUB_WORKSPACE
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        cp -rf ./Patches/*.dts   openwrt/target/linux/mediatek/dts/
+        
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
@@ -99,8 +99,8 @@ jobs:
         cd $OPENWRT_PATH
         chmod +x diy.sh
         chmod +x preset-clash-core.sh
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
+        ./diy.sh
+        ./preset-clash-core.sh
         
 
     - name: Load Custom Configuration
