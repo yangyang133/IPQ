@@ -6,9 +6,9 @@ on:
     - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/padavanonly/immortalwrtARM
-  REPO_BRANCH: mt7981
-  CONFIG_FILE: configs/3601.config
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
+  REPO_BRANCH: master
+  CONFIG_FILE: configs/360t7dz.config
   DIY_SCRIPT: diy.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
