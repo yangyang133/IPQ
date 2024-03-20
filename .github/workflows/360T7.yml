@@ -9,7 +9,7 @@ env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x.git
   REPO_BRANCH: master
   CONFIG_FILE: configs/36.config
-  DIY_SCRIPT: diy.sh
+  DIY_SCRIPT: scripts/diy-script.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -94,7 +94,7 @@ jobs:
     
     - name: Install Feeds
       run: |
-        cp $DIY_SCRIPT $OPENWRT_PATH/diy.sh
+        cp scripts/*.sh $OPENWRT_PATH/
         cp scripts/preset-clash-core.sh $OPENWRT_PATH/  
         cd $OPENWRT_PATH
         chmod +x diy.sh
