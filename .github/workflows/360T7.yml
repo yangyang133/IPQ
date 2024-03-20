@@ -99,8 +99,8 @@ jobs:
         cd $OPENWRT_PATH
         chmod +x diy.sh
         chmod +x preset-clash-core.sh
-        ./diy.sh
-        ./preset-clash-core.sh
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
         
 
     - name: Load Custom Configuration
