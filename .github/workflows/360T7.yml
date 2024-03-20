@@ -94,8 +94,7 @@ jobs:
     
     - name: Install Feeds
       run: |
-        cp scripts/*.sh $OPENWRT_PATH/
-        cp scripts/preset-clash-core.sh $OPENWRT_PATH/  
+        cp scripts/*.sh $OPENWRT_PATH/  
         cd $OPENWRT_PATH
         chmod +x diy.sh
         chmod +x preset-clash-core.sh
