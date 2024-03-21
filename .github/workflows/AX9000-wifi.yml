@@ -6,7 +6,7 @@ on:
     - cron: 0 19 * * *
 
 env:
-  REPO_URL:https://github.com/Boos4721/openwrt
+  REPO_URL: https://github.com/Boos4721/openwrt
   REPO_BRANCH: master
   CONFIG_FILE: configs/ax9000.config
   DIY_SCRIPT: diy-script.sh
