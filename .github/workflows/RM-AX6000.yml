@@ -8,7 +8,7 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrtARM
   REPO_BRANCH: mt7986
-  CONFIG_FILE: configs/6000.config
+  CONFIG_FILE: configs/6000mr.config
   DIY_SCRIPT: scripts/diy.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
@@ -91,8 +91,8 @@ jobs:
         cd $OPENWRT_PATH
         chmod +x diy.sh
         chmod +x preset-clash-core.sh
-        ./diy.sh
-        ./preset-clash-core.sh
+        ./scripts/feeds update
+        ./scripts/feeds install -a  
         
 
     - name: Load Custom Configuration
