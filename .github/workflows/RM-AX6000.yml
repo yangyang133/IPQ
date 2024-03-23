@@ -6,9 +6,9 @@ on:
     - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/padavanonly/immortalwrtARM
+  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x
   REPO_BRANCH: mt7986
-  CONFIG_FILE: configs/6000mr.config
+  CONFIG_FILE: configs/AX6000.config
   DIY_SCRIPT: scripts/diy.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
