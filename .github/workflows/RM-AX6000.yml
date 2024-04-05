@@ -6,8 +6,8 @@ on:
     - cron: 0 19 * * *
 
 env:
-  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x
-  REPO_BRANCH: mt7986
+  REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
+  REPO_BRANCH: openwrt-21.02
   CONFIG_FILE: configs/mt7986-ax6000.config
   DIY_SCRIPT: scripts/diy.sh
   CLASH_KERNEL: amd64
@@ -61,8 +61,6 @@ jobs:
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
-
-        
 
     - name: Generate Variables
       run: |
