@@ -98,9 +98,7 @@ jobs:
         cp scripts/preset-clash-core.sh $OPENWRT_PATH/  
         cd $OPENWRT_PATH
         chmod +x diy.sh
-        chmod +x preset-clash-core.sh
         ./diy.sh
-        ./preset-clash-core.sh
         
 
     - name: Load Custom Configuration
